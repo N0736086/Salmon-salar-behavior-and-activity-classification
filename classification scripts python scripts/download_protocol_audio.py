@@ -1,0 +1,109 @@
+#!/usr/bin/env python3
+
+import os
+import pandas as pd
+
+from box_sdk_gen import (
+    BoxClient,
+    BoxDeveloperTokenAuth
+)
+
+# ==========================================
+# CONFIG
+# ==========================================
+
+TOKEN = "aOJgNcmsIm938nlep5z6YLL6BKQrP1Xf"
+
+MANIFEST = "protocol_manifest.csv"
+
+OUTPUT_DIR = "protocol_audio"
+
+os.makedirs(
+    OUTPUT_DIR,
+    exist_ok=True
+)
+
+# ==========================================
+# BOX CLIENT
+# ==========================================
+
+auth = BoxDeveloperTokenAuth(TOKEN)
+
+client = BoxClient(auth)
+
+# ==========================================
+# LOAD MANIFEST
+# ==========================================
+
+df = pd.read_csv(
+    MANIFEST
+)
+
+# ==========================================
+# DOWNLOAD
+# ==========================================
+
+for idx, row in df.iterrows():
+
+    file_id = str(row["file_id"])
+
+    filename = row["file_name"]
+
+    output_file = os.path.join(
+        OUTPUT_DIR,
+        filename
+    )
+
+    if os.path.exists(output_file):
+
+        print(
+            f"SKIP {filename}"
+        )
+
+        continue
+
+    print(
+        f"{idx+1}/{len(df)}  {filename}"
+    )
+
+    try:
+
+        stream = (
+            client.downloads
+            .download_file(file_id)
+        )
+
+        with open(
+            output_file,
+            "wb"
+        ) as f:
+
+            while True:
+
+                chunk = stream.read(
+                    1024 * 1024
+                )
+
+                if not chunk:
+                    break
+
+                f.write(chunk)
+
+    except Exception as e:
+
+        if "expired" in str(e).lower():
+
+            print(
+                "\nTOKEN EXPIRED"
+            )
+
+            raise SystemExit(1)
+
+        print(
+            "FAILED:",
+            filename
+        )
+
+        print(e)
+
+print("\nFinished")
