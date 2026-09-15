@@ -1,0 +1,14 @@
+\begin{table}[htbp]
+\caption{Per-Class F1 Score: Gnb Background Per Class F1}
+\label{tab:gnb_background_per_class_f1}
+\begin{tabular}{lr}
+\toprule
+class & f1 \\
+\midrule
+agitation & 0.1553 \\
+background & 1.0000 \\
+clustering & 0.1839 \\
+normal & 0.6913 \\
+\bottomrule
+\end{tabular}
+\end{table}

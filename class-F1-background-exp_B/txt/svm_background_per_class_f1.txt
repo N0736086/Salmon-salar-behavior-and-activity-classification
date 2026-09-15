@@ -1,0 +1,14 @@
+\begin{table}[htbp]
+\caption{Per-Class F1 Score: Svm Background Per Class F1}
+\label{tab:svm_background_per_class_f1}
+\begin{tabular}{lr}
+\toprule
+class & f1 \\
+\midrule
+agitation & 0.3158 \\
+background & 1.0000 \\
+clustering & 0.7687 \\
+normal & 0.7944 \\
+\bottomrule
+\end{tabular}
+\end{table}

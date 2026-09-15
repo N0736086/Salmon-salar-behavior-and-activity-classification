@@ -1,0 +1,14 @@
+\begin{table}[htbp]
+\caption{Per-Class F1 Score: Xgb Background Per Class F1}
+\label{tab:xgb_background_per_class_f1}
+\begin{tabular}{lr}
+\toprule
+class & f1 \\
+\midrule
+agitation & 0.3713 \\
+background & 1.0000 \\
+clustering & 0.8136 \\
+normal & 0.8355 \\
+\bottomrule
+\end{tabular}
+\end{table}

@@ -1,0 +1,14 @@
+\begin{table}[htbp]
+\caption{Per-Class F1 Score: Et Background Per Class F1}
+\label{tab:et_background_per_class_f1}
+\begin{tabular}{lr}
+\toprule
+class & f1 \\
+\midrule
+agitation & 0.4180 \\
+background & 1.0000 \\
+clustering & 0.8487 \\
+normal & 0.8690 \\
+\bottomrule
+\end{tabular}
+\end{table}

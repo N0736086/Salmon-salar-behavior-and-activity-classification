@@ -1,0 +1,14 @@
+\begin{table}[htbp]
+\caption{Per-Class F1 Score: Mlp Background Per Class F1}
+\label{tab:mlp_background_per_class_f1}
+\begin{tabular}{lr}
+\toprule
+class & f1 \\
+\midrule
+agitation & 0.3509 \\
+background & 0.9983 \\
+clustering & 0.7697 \\
+normal & 0.7899 \\
+\bottomrule
+\end{tabular}
+\end{table}
